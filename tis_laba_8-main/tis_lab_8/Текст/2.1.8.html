@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 canvas shapes</title>
+<script>
+    function draw() {
+        
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.lineWidth = 4;
+        ctx.strokeStyle="green"
+        ctx.beginPath();
+        ctx.arc(270, 220, 70, 0, Math.PI);  
+        ctx.stroke();
+        ctx.font = "18px serif"
+        ctx.fillText("ТЮЛЬКИН", 225, 250);
+        ctx.beginPath();
+        ctx.fillStyle="green"
+        ctx.fillRect(198,219,144,4 )
+    }
+</script>
+</head>
+
+<body onload="draw();">
+<canvas id="myCanvas" width="350" height="350">
+</canvas>
+</body>
+
+</html> 

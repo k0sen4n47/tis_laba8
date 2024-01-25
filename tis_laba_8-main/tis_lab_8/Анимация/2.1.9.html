@@ -1,0 +1,89 @@
+<<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Canvas Drawing</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="myCanvas" width="500" height="400"></canvas>
+
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var daytime = true; // начальное значение времени суток
+
+    function drawScene() {
+      // небо
+      if (daytime) {
+        ctx.fillStyle = "skyblue";
+      } else {
+        ctx.fillStyle = "black";
+      }
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // солнце или луна
+      ctx.beginPath();
+      if (daytime) {
+        ctx.arc(450, 50, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "yellow";
+      } else {
+        ctx.arc(450, 50, 30, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+      }
+      ctx.fill();
+
+      // остальные элементы сцены...
+      // остальной код
+
+      // комментарий: добавьте нужные вам элементы сцены
+
+          // квадрат
+          ctx.fillStyle = "brown";
+        ctx.fillRect(100, 200, 200, 150);
+
+        // Дверь
+        ctx.fillStyle = "black";
+        ctx.fillRect(180, 300, 40, 50);
+
+        // крыша
+        ctx.beginPath();
+        ctx.moveTo(100, 200);
+        ctx.lineTo(300, 200);
+        ctx.lineTo(200, 100);
+        ctx.closePath();
+        ctx.fillStyle = "grey";
+        ctx.fill();
+
+        // гриб
+        ctx.fillStyle = "beige";
+        ctx.fillRect(400, 200, 50, 150);
+
+        ctx.fillStyle = "brown";
+        ctx.beginPath();
+        ctx.arc(425, 200, 80, 0, Math.PI, true);
+        ctx.fill();
+      }
+
+
+
+    // Изменение времени суток и вызов функции отрисовки сцены
+    function changeDaytime() {
+      daytime = !daytime;
+      drawScene();
+    }
+
+    // вызов функции для отрисовки начальной сцены
+    drawScene();
+
+    // запуск смены солнца-луны каждые 10 секунд
+    setInterval(changeDaytime, 10000);
+  </script>
+</body>
+
+</html>
